@@ -5,133 +5,219 @@
 
 # 🚀 Google Play Clone – Telegram Bot & JS Obfuscation
 
-## ⚠️ **Peringatan Etika & Hukum** (Wajib Baca!)
-**Project ini 100% hanya untuk tujuan edukasi, dokumentasi, dan riset keamanan pribadi.**
+---
 
-- Notifikasi Telegram hanya boleh dikirim ke akun/Chat ID milik sendiri.
-- Dilarang keras memantau, mengumpulkan data, atau mengirim info ke orang lain tanpa izin eksplisit → melanggar UU ITE, UU PDP, dll.
-- Penulis tidak bertanggung jawab atas segala bentuk penyalahgunaan kode ini.
+## ⚠️ **Peringatan Etika & Hukum** (Wajib Baca!)
+
+**Project ini 100% hanya untuk tujuan edukasi, dokumentasi, dan riset keamanan pribadi.**  
+
+- Notifikasi Telegram hanya boleh dikirim ke akun/Chat ID milik sendiri.  
+- Dilarang keras memantau, mengumpulkan data, atau mengirim info ke orang lain tanpa izin eksplisit → melanggar UU ITE, UU PDP, dll.  
+- Penulis tidak bertanggung jawab atas segala bentuk penyalahgunaan kode ini.  
 
 ---
 
 ## 📖 **Daftar Isi**
-1. Pengenalan  
-2. Fitur Utama  
-3. Instalasi & Setup  
-4. Build Project  
-5. Struktur Folder  
-6. Alur Kerja (Educational)  
-7. Catatan Keamanan  
-8. Legal Notice  
+
+1️⃣ Pengenalan  
+2️⃣ Fitur Utama  
+3️⃣ Instalasi & Setup  
+4️⃣ Build Project  
+5️⃣ Struktur Folder  
+6️⃣ Alur Kerja (Educational)  
+7️⃣ Catatan Keamanan  
+8️⃣ Legal Notice  
 
 ---
 
-## 🎯 **Pengenalan**  
-Clone sederhana tampilan Google Play Store (support PWA) yang terintegrasi dengan Telegram Bot untuk kirim notifikasi event, plus JavaScript Obfuscation untuk proteksi kode.
+## 🎯 **Pengenalan**
 
-Tujuan utama:  
+Clone sederhana tampilan Google Play Store (support PWA) yang terintegrasi dengan Telegram Bot untuk kirim notifikasi event, plus JavaScript Obfuscation untuk proteksi kode.  
+
+**Tujuan utama:**  
 - Belajar integrasi Telegram Bot API ke website  
 - Memahami teknik obfuscation JS agar kode susah dibaca/dimodifikasi  
-- Mengamati event flow di environment lokal pribadi
+- Mengamati event flow di environment lokal pribadi  
 
 ---
 
-## ✨ **Fitur Utama**  
-- UI mimic Google Play Store (index.html + manifest.json + sw.js)  
+## ✨ **Fitur Utama**
+
+- UI mimic Google Play Store (`index.html` + `manifest.json` + `sw.js`)  
 - Telegram Bot kirim notifikasi real-time (page open, touch event, klik download)  
-- Obfuscation JS otomatis via npm run build  
-- Output di folder dist/  
-- Ambil User-Agent untuk edukasi fingerprinting dasar
+- Obfuscation JS otomatis via `npm run build`  
+- Output di folder `dist/`  
+- Ambil User-Agent untuk edukasi fingerprinting dasar  
 
 ---
 
 ## 🧰 **Instalasi & Setup**
 
-1. Clone repo:  
-   git clone https://github.com/raghid-setiawan/google-play-clone.git  
-   cd google-play-clone
+1️⃣ **Clone Repository**
 
-2. **Ganti placeholder wajib (EDUKASI ONLY - lakukan untuk test lokal SAJA)**  
-   - **index.html**  
-     Cari teks **Huggle: Free Video Call** → ganti jadi nama APK kamu sendiri (misal: "My Test App v1.0")  
+```bash
+git clone https://github.com/raghid-setiawan/google-play-clone.git
+cd google-play-clone
+```
 
-   - **js/app.js**  
-     - Ubah pesan notif: `await sendTelegram('User started APK download');` → bisa diganti lebih spesifik (contoh: `'Download dimulai: nama-apk.apk'`)  
-     - Ubah link download: `link.href = 'https://t.me/Sec_Society';` → ganti jadi `'apk/nama-file-kamu.apk'` (direct dari folder apk/) atau link eksternal lain  
-     - Ubah nama file download: `link.download = 'test.apk';` → ganti jadi nama file APK asli (misal: `'my-app-v1.apk'`)  
+---
 
-   - **Setup Telegram Bot**  
-     Buka file **js/app.js**  
-     Cari baris:  
-     `const TG_TOKEN = '';//YOUR BOT TOKEN`  
-     `const TG_CHAT = '';//YOUR CHAT ID`  
-     Ganti nilai di dalam '' dengan token & chat ID milikmu sendiri **untuk test lokal SAJA**  
-     Setelah test selesai, **kembalikan ke ''** sebelum commit/push!
+2️⃣ **Ganti Placeholder Wajib** *(EDUKASI ONLY – lakukan untuk test lokal SAJA)*
 
-3. Install dependencies:  
-   npm install
+#### 🔹 Edit `index.html`
 
-**Catatan penting:**  
+Cari teks:
+
+```text
+Huggle: Free Video Call
+```
+
+Ganti dengan nama APK milikmu sendiri:
+
+```text
+My Test App v1.0
+```
+
+---
+
+#### 🔹 Edit `js/app.js`
+
+```js
+// Ubah pesan notif sesuai kebutuhan
+await sendTelegram('User started APK download');
+
+// Contoh ganti:
+await sendTelegram('Download dimulai: nama-apk.apk');
+```
+
+```js
+// Ubah link download
+link.href = 'https://t.me/Sec_Society';
+
+// Ganti menjadi:
+// 'apk/nama-file-kamu.apk' → direct dari folder apk/
+// atau link eksternal lain
+```
+
+```js
+// Ubah nama file download
+link.download = 'test.apk';
+
+// Ganti menjadi:
+// 'nama-file-apk-kamu.apk'
+// (harus sesuai nama file asli)
+```
+
+---
+
+3️⃣ **Setup Telegram Bot**
+
+Buka file:
+
+```bash
+js/app.js
+```
+
+Cari baris:
+
+```js
+const TG_TOKEN = ''; // YOUR BOT TOKEN
+const TG_CHAT  = ''; // YOUR CHAT ID
+```
+
+Ganti nilai di dalam `' '` dengan token & chat ID milikmu sendiri **untuk test lokal SAJA**.  
+
+⚠️ Setelah test selesai, kembalikan ke:
+
+```js
+const TG_TOKEN = '';
+const TG_CHAT  = '';
+```
+
+sebelum commit / push.
+
+---
+
+4️⃣ **Install Dependencies**
+
+```bash
+npm install
+```
+
+---
+
+### 📌 Catatan Penting
+
 - Semua penggantian di langkah 2 hanya untuk eksperimen pribadi  
-- **Jangan commit** token, link, atau nama file asli ke repo  
-- Kembalikan semua placeholder ke nilai awal sebelum push
-  
+- **JANGAN COMMIT** token, link, atau nama file asli ke repo  
+- Kembalikan semua placeholder ke nilai awal sebelum push  
+- Gunakan bot khusus testing (buat baru via `@BotFather`)  
+- Test hanya di localhost / environment pribadi  
+
 ---
 
 ## 🛠 **Build Project**
-Jalankan perintah berikut untuk membangun versi obfuscated:  
-npm run build  
 
-Proses build akan menghasilkan folder dist/ yang berisi file-file sudah diobfuscate.  
-Contoh output terminal yang sukses:  
-Build complete. See dist/ for obfuscated output.  
+1️⃣ Jalankan perintah berikut untuk membangun versi obfuscated:
 
-Screenshot proses build, struktur folder, kode konfigurasi Telegram, dan preview halaman di browser:  
+```bash
+npm run build
+```
 
-![Screenshot Build Process & Project Overview](https://i.imgur.com/Mm3BXzT.jpeg)
-*(Gambar menampilkan VS Code dengan app.js, terminal npm run build sukses, struktur folder, dan preview Google Play clone di browser)*
+2️⃣ Output akan berada di folder `dist/`.  
 
-Test lokal setelah build:  
-npx live-server dist/  
-Buka http://localhost:8080 → lakukan interaksi → cek notifikasi masuk di Telegram pribadimu.
+3️⃣ Test lokal setelah build:
 
----
+```bash
+npx live-server dist/
+```
 
-## 📁 **Struktur Folder**  
-.  
-├── apk/                 # Contoh APK (edukasi only)  
-├── dist/                # Hasil build obfuscated  
-├── img/                 # Asset gambar (termasuk screenshot & blueprint)  
-├── js/                  # Source JS (app.js dll)  
-├── scripts/             # Build script (build.js)  
-├── index.html  
-├── manifest.json  
-├── sw.js  
-├── package.json  
-├── package-lock.json  
+Buka `http://localhost:8080` → lakukan interaksi → cek notifikasi masuk di Telegram pribadi.
 
 ---
 
-## 🔎 **Alur Kerja (Educational)**  
-1. Buka halaman localhost  
-2. Event listener aktif (DOMContentLoaded, touch, dll)  
-3. Kumpul info sederhana (User-Agent, event)  
-4. Kirim via fetch ke Telegram API (bot milik sendiri)  
-5. Bot terima notifikasi  
-6. Kode di dist/ sudah obfuscated → latihan proteksi source
+## 📁 **Struktur Folder**
+
+```
+.
+├── apk/          # Contoh APK (edukasi only)
+├── dist/         # Hasil build obfuscated
+├── img/          # Asset gambar (screenshot & blueprint)
+├── js/           # Source JS (app.js dll)
+├── scripts/      # Build script (build.js)
+├── index.html
+├── manifest.json
+├── sw.js
+├── package.json
+├── package-lock.json
+```
 
 ---
 
-## 🔐 **Catatan Keamanan & Edukasi**  
+## 🔎 **Alur Kerja (Educational)**
+
+1️⃣ Buka halaman localhost  
+2️⃣ Event listener aktif (DOMContentLoaded, touch, dll)  
+3️⃣ Kumpul info sederhana (User-Agent, event)  
+4️⃣ Kirim via fetch ke Telegram API (bot milik sendiri)  
+5️⃣ Bot terima notifikasi  
+6️⃣ Kode di `dist/` sudah obfuscated → latihan proteksi source  
+
+---
+
+## 🔐 **Catatan Keamanan & Edukasi**
+
 - JANGAN commit token/chat ID asli ke repo  
-- Gunakan bot token khusus testing (bikin baru via @BotFather)  
+- Gunakan bot token khusus testing (bikin baru via `@BotFather`)  
 - Test hanya di localhost / VM / sandbox pribadi  
 - Obfuscation untuk belajar proteksi kode, bukan untuk hal negatif  
-- Ide lanjutan (legal): deteksi DevTools, anti-debug check
+- Ide lanjutan (legal): deteksi DevTools, anti-debug check  
 
 ---
 
-## 📜 **Legal Notice**  
+## 📜 **Legal Notice**
+
 - Project ini murni untuk edukasi dan penelitian pribadi  
 - Gunakan secara legal dan etis  
-- Ide awal dari sumber edukasi Telegram, hanya untuk pembelajaran
+- Ide awal dari sumber edukasi Telegram, hanya untuk pembelajaran  
+
