@@ -1,3 +1,8 @@
+![Edukasi Only](https://img.shields.io/badge/Edukasi%20Only-Important-red?style=flat-square&logo=bookstack)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow?style=flat-square&logo=javascript)
+![Telegram Bot](https://img.shields.io/badge/Telegram%20Bot-Integrated-blue?style=flat-square&logo=telegram)
+![License](https://img.shields.io/badge/License-CC0--1.0-lightgrey?style=flat-square)
+
 # 🚀 Google Play Clone – Telegram Bot & JS Obfuscation
 
 ## ⚠️ **Peringatan Etika & Hukum** (Wajib Baca!)
@@ -52,7 +57,7 @@ Tujuan utama:
    - Buka file js/app.js  
    - Cari baris:  
      const TG_TOKEN = '';//YOUR BOT TOKEN  
-     const TG_CHAT  = '';//YOUR CHAT ID  
+     const TG_CHAT = '';//YOUR CHAT ID  
    - Ganti nilai di dalam '' dengan token & chat ID milikmu sendiri **untuk test lokal SAJA**  
    - Setelah test selesai, kembalikan ke '' sebelum commit/push!
 
@@ -89,7 +94,6 @@ Buka http://localhost:8080 → lakukan interaksi → cek notifikasi masuk di Tel
 ├── sw.js  
 ├── package.json  
 ├── package-lock.json  
-└── .gitignore  
 
 ---
 
